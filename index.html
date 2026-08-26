@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Tesseract - 服务器状态</title>
     <link rel="icon" href="tudou.png" type="image/png">
-    <!-- 主题预设置 -->
     <script>
         (function() {
             const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -16,7 +15,6 @@
         })();
     </script>
     <style>
-        /* ===== CSS 变量 ===== */
         :root {
             --bg-body: #000000;
             --bg-card: #111111;
@@ -50,7 +48,6 @@
             --switch-active: #4cd964;
         }
 
-        /* ===== 基础样式 ===== */
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior:smooth; }
         body {
@@ -61,7 +58,6 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* ===== 右上角控制栏 ===== */
         .top-bar {
             position: fixed;
             top: 16px;
@@ -137,7 +133,6 @@
             min-width: 32px;
         }
 
-        /* ===== 页面内容 ===== */
         .container {
             max-width: 850px;
             margin: 0 auto;
@@ -183,7 +178,6 @@
             font-size: clamp(20px,4vw,26px);
         }
 
-        /* ===== 服务器状态卡片 ===== */
         .server-item {
             margin-bottom: 24px;
             padding-bottom: 16px;
@@ -215,7 +209,6 @@
         .dot-offline { color:#e53935; }
         .warn-text { color:#ff6b6b; }
 
-        /* ===== 底部版权 ===== */
         .footer {
             text-align: center;
             margin-top: 50px;
@@ -229,7 +222,6 @@
             color: var(--text-muted);
             line-height:1.8;
         }
-
         #refreshStatusBtn {
             padding:10px 22px;
             background:#3070d8;
@@ -241,7 +233,6 @@
         }
         #refreshStatusBtn:disabled { background:#444; cursor:not-allowed; }
 
-        /* ===== 毒马铃薯图标 ===== */
         .potato-icon {
             width: 26px;
             height: 26px;
@@ -272,7 +263,6 @@
     </style>
 </head>
 <body>
-    <!-- 右上角控制栏 -->
     <div class="top-bar">
         <button class="glass-btn" id="changeLangBtn">
             <span>🌐</span> <span id="langLabel">中文</span>
@@ -284,7 +274,6 @@
     </div>
 
     <div class="container">
-        <!-- 头部 -->
         <div class="header">
             <h1>Tesseract</h1>
             <div class="subtitle">
@@ -293,7 +282,6 @@
             </div>
         </div>
 
-        <!-- 仅服务器状态卡片 -->
         <div class="card">
             <h2>
                 <span data-lang="zh">服务器运行状态</span>
@@ -309,7 +297,6 @@
             </div>
         </div>
 
-        <!-- 底部版权 -->
         <div class="footer">Tesseract Minecraft Server © 2026</div>
         <div class="extra-footer">
             <div>Powered by Cloudflare</div>
@@ -333,8 +320,8 @@
                 return;
             }
 
-            // ===== API 地址 =====
-            const API_MAIN = 'https://api.mcsrvstat.us/2/hmfree.tooo.top:20049';
+            // ===== API 地址（均使用 mcstatus.io） =====
+            const API_MAIN = 'https://api.mcstatus.io/v2/status/java/hmfree.tooo.top:20049';
             const API_SMALL = 'https://api.mcstatus.io/v2/status/java/play.simpfun.cn:28381';
 
             // ===== 语言数据 =====
@@ -405,7 +392,7 @@
                 setLang(currentLang === 'zh' ? 'en' : 'zh');
             });
 
-            // ===== 工具：获取版本字符串 =====
+            // ===== 工具：获取版本字符串（兼容两种 API） =====
             function getVersionString(ver) {
                 if (!ver) return 'Unknown';
                 if (typeof ver === 'string') return ver;
