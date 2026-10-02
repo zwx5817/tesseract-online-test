@@ -37,7 +37,7 @@
             --bg-card: #ffffff;
             --text-primary: #222222;
             --text-secondary: #555555;
-            --text-muted: #444444;   /* ← 加深，浅色背景下清晰可见 */
+            --text-muted: #000000;
             --border-color: rgba(0,0,0,0.08);
             --shadow-color: rgba(0,0,0,0.15);
             --glass-bg: rgba(255,255,255,0.35);
@@ -88,7 +88,6 @@
             background: rgba(0,0,0,0.35);
             transition: background 0.3s;
         }
-        /* 浅色模式下不要高亮遮罩 */
         html.light-mode #bgOverlay {
             background: transparent;
         }
@@ -478,7 +477,6 @@
 
             let currentLang = navigator.language.startsWith('zh') ? 'zh' : 'en';
 
-            // 主题
             let currentTheme = window.__systemTheme || 'dark';
             let userOverride = false;
             function applyTheme(theme) {
@@ -505,7 +503,6 @@
             applyTheme(initialTheme);
             userOverride = false;
 
-            // 语言
             function setLang(lang) {
                 currentLang = lang;
                 document.documentElement.classList.toggle('lang-en', lang === 'en');
